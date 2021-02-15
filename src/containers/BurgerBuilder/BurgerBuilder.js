@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Aux from '../hoc/Auxx';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
-
-
+import Modal from '../../components/Layout/UI/Modal/Modal'
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 class BurgerBuilder extends Component {
 
   state ={
@@ -109,6 +109,9 @@ render() {
   
 return (
     <Aux>
+      <Modal>
+        <OrderSummary ingredients={this.state.Ingredients}/>
+      </Modal>
         <Burger isAnyIngredient={this.isAnyIngredient} type={this.state.Ingredients} />
         <BuildControls
          addIngredient={this.addIngredient}
