@@ -31,19 +31,23 @@ class BurgerBuilder extends Component {
 
   }  
 
-  updatePurchaseable = () =>{
+  updatePurchaseable (sum) {
 
-    const Ingredients = {
-      ...this.state.Ingredients
-    }
-const sum = Object.keys(Ingredients)
-      .map(igKey =>{
-        return Ingredients[igKey];
-      })
-      .reduce((sum,el)=>{
-        return sum+el;
-      },0)
-      this.setState({purchaseable:sum>0});
+//     const Ingredients = {
+//       ...this.state.Ingredients
+//     }
+// const sum = Object.keys(Ingredients)
+//       .map(igKey =>{
+//         return Ingredients[igKey];
+//       })
+//       .reduce((sum,el)=>{
+//         return sum+el;
+//       },0)
+//       this.setState({purchaseable:sum>0});
+     
+       this.setState({purchaseable:sum>0})
+     
+
 
    
    
@@ -61,7 +65,9 @@ const sum = Object.keys(Ingredients)
       bill : newBill
     })
     
-    this.updatePurchaseable()
+    
+
+    this.updatePurchaseable(Object.values(newIngredients).reduce((a,c)=>a+c))
     
   }
 
@@ -84,7 +90,7 @@ const sum = Object.keys(Ingredients)
    })
    
    
-  this.updatePurchaseable()
+   this.updatePurchaseable(Object.values(newIngredients).reduce((a,c)=>a+c))
    
    
    
@@ -109,7 +115,7 @@ return (
          removeIngredient={this.removeIngredient}
          disableIngredients={disableIngredients}
          price={this.state.bill}
-         purchase={this.state.purchase}
+         purchase={this.state.purchaseable}
         />
     </Aux>
 
