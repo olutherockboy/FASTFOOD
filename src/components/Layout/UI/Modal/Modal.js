@@ -3,7 +3,9 @@ import classes from '../Modal/Modal.module.css';
 
 
 const modal = (props) => (
-     <div className={classes.Modal}>
+
+
+     <div hidden={!props.onPurchase} className={classes.Modal}>
          {props.children}
      </div>
 ); 

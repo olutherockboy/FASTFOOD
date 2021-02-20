@@ -4,6 +4,11 @@ import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/Layout/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
+import Backdrop from '../../components/Layout/UI/Backdrop/Backdrop';
+
+
+
+
 class BurgerBuilder extends Component {
 
   state ={
@@ -25,11 +30,28 @@ class BurgerBuilder extends Component {
 
     bill:0,
 
-    purchaseable : false
+    purchaseable : false,
+    purchasing: false
      
     
 
   }  
+
+  confirmPurchase = () =>{
+    alert('thanks for your purchase')
+  }
+
+
+  cancelPurchase = () =>{
+    this.setState({purchasing: false})
+  }
+
+
+  onPurchase = () =>{
+    this.setState({purchasing: true})
+    
+    
+  }
 
   updatePurchaseable (sum) {
 
@@ -48,10 +70,16 @@ class BurgerBuilder extends Component {
        this.setState({purchaseable:sum>0})
      
 
+  //   let purchase= this.state.purchaseable
 
+  //  let ingredients = Object.values(this.state.Ingredients).reduce((accumulator, currentValue) => accumulator + currentValue)
+  //  let isTrue = ingredients>0
+  //  if (isTrue ) {
+          
+  //        this.setState({purchaseable:!purchase})
+   }
    
-   
-  }
+  
 
   addIngredient = (type) => {
    var oldCount = this.state.Ingredients[type]
@@ -65,9 +93,7 @@ class BurgerBuilder extends Component {
       bill : newBill
     })
     
-    
-
-    this.updatePurchaseable(Object.values(newIngredients).reduce((a,c)=>a+c))
+    this.updatePurchaseable(Object.values(newIngredients).reduce((accumulator, currentValue) => accumulator + currentValue))
     
   }
 
@@ -90,7 +116,7 @@ class BurgerBuilder extends Component {
    })
    
    
-   this.updatePurchaseable(Object.values(newIngredients).reduce((a,c)=>a+c))
+  this.updatePurchaseable(Object.values(newIngredients).reduce((accumulator, currentValue) => accumulator + currentValue))
    
    
    
@@ -105,20 +131,27 @@ render() {
       disableIngredients[key] = disableIngredients[key] <= 0
     }
 
-  
+  const backdrop = this.state.purchasing?<Backdrop click={this.cancelPurchase}/>:null
   
 return (
     <Aux>
-      <Modal>
-        <OrderSummary ingredients={this.state.Ingredients}/>
+      <Modal  onPurchase={this.state.purchasing} cancelPurchase={this.cancelPurchase} >
+        <OrderSummary cancelPurchase={this.cancelPurchase}
+                      confirmPurchase={this.confirmPurchase}  
+                     ingredients={this.state.Ingredients}
+                     price={this.state.bill}
+                     />
       </Modal>
+      {backdrop}
         <Burger isAnyIngredient={this.isAnyIngredient} type={this.state.Ingredients} />
         <BuildControls
          addIngredient={this.addIngredient}
          removeIngredient={this.removeIngredient}
          disableIngredients={disableIngredients}
          price={this.state.bill}
+         purchase={this.state.purchase}
          purchase={this.state.purchaseable}
+         onPurchase={this.onPurchase}
         />
     </Aux>
 

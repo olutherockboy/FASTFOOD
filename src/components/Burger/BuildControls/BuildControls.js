@@ -19,7 +19,7 @@ const buildControls = (props)=>(
                               key={ctrl.type + Math.random } label={ctrl.label} 
                               disableIngredient={props.disableIngredients[ctrl.type]}
                               />})}
-                            <button    disabled={!props.purchase} className={classes.OrderButton} >ORDER NOW</button>
+                            <button  onClick={props.onPurchase}  disabled={!props.purchase} className={classes.OrderButton} >ORDER NOW</button>
     </div>
 
 );
