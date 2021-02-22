@@ -8,7 +8,7 @@ import rEA from '../../Assets/logo192.png';
 const logo = (props) => (
 
     <div className={classes.Logo}>
-        <img src={logoo}  alt='Burgers R us'/>
+        <img  src={logoo}  alt='Burgers R us'/>
     </div>
 
 )
