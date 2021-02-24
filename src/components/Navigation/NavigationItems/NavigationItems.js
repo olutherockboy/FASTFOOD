@@ -1,6 +1,6 @@
 import React from 'react'
-// import  classes from '../../Navigation/NavigationItems/NavigationItems.module.css'
-import NavigationItem from '../NavigationItems/NavigationItem/'
+ import  classes from '../../Navigation/NavigationItems/NavigationItems.module.css'
+import NavigationItem from '../NavigationItems/NavigationItem/NavigationItem'
 
 
 const navigationItems = () =>(
