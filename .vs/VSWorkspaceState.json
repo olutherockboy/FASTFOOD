@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\Burger",
+    "\\src\\components\\Burger\\BurgerIngredients",
+    "\\src\\components\\Navigation",
+    "\\src\\components\\Navigation\\NavigationItems",
+    "\\src\\components\\Navigation\\NavigationItems\\NavigationItem"
+  ],
+  "SelectedNode": "\\src\\components\\Burger\\BurgerIngredients\\BurgerIngredients.js",
+  "PreviewInSolutionExplorer": false
+}
