@@ -10,7 +10,9 @@ class Layout extends Component {
   };
 
   toggle = () => {
-    this.setState({ showSideDrawer: !this.state.showSideDrawer });
+    this.setState((previState) => {
+      return { showSideDrawer: !previState.showSideDrawer };
+    });
   };
 
   render() {
