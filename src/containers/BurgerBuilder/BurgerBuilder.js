@@ -112,10 +112,6 @@ class BurgerBuilder extends Component {
       disableIngredients[key] = disableIngredients[key] <= 0;
     }
 
-    const backdrop = this.state.purchasing ? (
-      <Backdrop click={this.cancelPurchase} show={this.state.purchasing} />
-    ) : null;
-
     return (
       <Aux>
         <Modal
@@ -129,7 +125,7 @@ class BurgerBuilder extends Component {
             price={this.state.bill}
           />
         </Modal>
-        {backdrop}
+        <Backdrop click={this.cancelPurchase} show={this.state.purchasing} />
         <Burger
           isAnyIngredient={this.isAnyIngredient}
           type={this.state.Ingredients}

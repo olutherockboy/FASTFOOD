@@ -1,13 +1,25 @@
-import React, { Component } from 'react';
-import classes from '../Modal/Modal.module.css';
+import React, { Component } from "react";
+import classes from "../Modal/Modal.module.css";
 
+class Modal extends Component {
+  componentDidUpdate() {
+    console.log("modal did update");
+  }
 
-const modal = (props) => (
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.onPurchase == nextProps.onPurchase) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
-
-     <div hidden={!props.onPurchase} className={classes.Modal}>
-         {props.children}
-     </div>
-); 
-
-export default modal;
+  render() {
+    return (
+      <div hidden={!this.props.onPurchase} className={classes.Modal}>
+        {this.props.children}
+      </div>
+    );
+  }
+}
+export default Modal;
